@@ -154,7 +154,48 @@ A classe CSS `.activated` é definida no estilo do componente do menu com as seg
 
 Em resumo, ao usar [routerLinkActive] com [routerLinkActiveOptions], você pode aplicar uma classe CSS específica, como .activated (que foi usada nesta aplicação), aos links de navegação que correspondem à rota ativa. Isso permite que você destaque visualmente os links ativos em seu menu de navegação, melhorando a usabilidade da sua aplicação Angular.
 
-**Observação:** Certifique-se de ajustar os detalhes com base na estrutura e necessidades específicas da sua aplicação. As configurações e estilos podem variar dependendo do design da sua aplicação Angular.
+`**Observação:**` Certifique-se de ajustar os detalhes com base na estrutura e necessidades específicas da sua aplicação. As configurações e estilos podem variar dependendo do design da sua aplicação Angular.
+
+</details>
+
+## Rotas Filhas (Children Routes) no Angular
+
+As rotas filhas (`children routes`) são um recurso poderoso do Angular que permite criar hierarquias de rotas aninhadas. Isso é particularmente útil quando você deseja segmentar partes específicas de sua aplicação com suas próprias configurações de rota e componentes.
+
+### Como as Rotas Filhas Funcionam
+
+As rotas filhas são definidas dentro das rotas principais (rotas pais) e são anexadas a essas rotas. Isso cria uma estrutura de rota aninhada, onde a rota pai pode ter uma ou mais rotas filhas associadas a ela.
+
+<details>
+
+### Exemplo de Rotas Filhas
+
+Vamos analisar um exemplo de uso de rotas filhas desta aplicação:
+
+```typescript
+const routes: Routes = [
+  { path: '', component: TitleComponent, pathMatch: 'full' },
+  {
+    path: 'portfolio',
+    component: CardComponent,
+    pathMatch: 'prefix',
+    children: [
+      { path: ':id', component: CardComponent }
+    ]
+  },
+  { path: '**', redirectTo: '' }
+];
+```
+
+Neste exemplo, temos uma rota principal /portfolio que está associada ao componente CardComponent. No entanto, essa rota principal também tem uma rota filha :id, que é definida como ':id'.
+A rota principal /portfolio carrega o componente CardComponent. Quando a URL corresponde a /portfolio, este componente é exibido.
+A rota filha :id permite que você passe um parâmetro na URL, como /portfolio/1 ou /portfolio/2. O valor passado no lugar de :id será capturado como um parâmetro e pode ser acessado no componente CardComponent.
+
+### Benefícios das Rotas Filhas
+
+As rotas filhas permitem que você crie estruturas de navegação hierárquicas em sua aplicação, o que é útil para dividir e organizar a funcionalidade da aplicação de maneira lógica. Cada rota filha pode ter seu próprio conjunto de rotas, parâmetros e lógica de componente, tornando mais fácil gerenciar aplicativos maiores e mais complexos.
+
+No exemplo acima, as rotas filhas permitem que você navegue para diferentes itens no portfólio (por exemplo, /portfolio/1, /portfolio/2) enquanto ainda mantém a estrutura da página do portfólio geral (usando o componente CardComponent).
 
 </details>
 
