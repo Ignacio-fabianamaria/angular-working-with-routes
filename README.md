@@ -115,3 +115,46 @@ Em resumo, ao utilizar o routerLink no Angular, você cria links de navegação 
 
 </details>
 
+## ActivatedRoute no Angular
+
+Ao desenvolver uma aplicação Angular com navegação por rotas, você pode querer destacar visualmente os links de navegação que correspondem à rota ativa. Isso pode ser alcançado usando `[routerLinkActive]` e `[routerLinkActiveOptions]`. Vamos explicar como funciona:
+
+<details>
+
+### `[routerLinkActive]`
+
+O `[routerLinkActive]` é uma diretiva Angular que permite aplicar uma classe CSS a um elemento HTML quando a rota correspondente estiver ativa. Neste caso, estamos usando `[routerLinkActive]="['activated']"`.
+
+- `routerLinkActive` é atribuído a um elemento âncora `<a>` que tem um atributo `[routerLink]` correspondente. Ele monitora as mudanças de rota e aplica a classe CSS especificada quando a rota correspondente é ativada.
+
+### `[routerLinkActiveOptions]`
+
+O `[routerLinkActiveOptions]` permite configurar opções para o comportamento do `[routerLinkActive]`. No exemplo, estamos usando `[routerLinkActiveOptions]="{ exact: true }"`.
+
+- `{ exact: true }` garante que a classe CSS seja aplicada somente quando a rota correspondente for a rota exata. Isso significa que a classe será aplicada apenas quando o link de navegação corresponder exatamente à URL atual.
+
+### Classe CSS `.activated`
+
+A classe CSS `.activated` é definida no estilo do componente do menu com as seguintes propriedades:
+
+```css
+.activated {
+  color: red;
+  font-size: larger;
+  font-weight: 900;
+}
+
+```
+
+- color: red;: Define a cor do texto para vermelho quando o link está ativo.
+
+- font-size: larger;: Aumenta o tamanho da fonte quando o link está ativo.
+
+- font-weight: 900;: Define a espessura da fonte como negrito quando o link está ativo.
+
+Em resumo, ao usar [routerLinkActive] com [routerLinkActiveOptions], você pode aplicar uma classe CSS específica, como .activated (que foi usada nesta aplicação), aos links de navegação que correspondem à rota ativa. Isso permite que você destaque visualmente os links ativos em seu menu de navegação, melhorando a usabilidade da sua aplicação Angular.
+
+**Observação:** Certifique-se de ajustar os detalhes com base na estrutura e necessidades específicas da sua aplicação. As configurações e estilos podem variar dependendo do design da sua aplicação Angular.
+
+</details>
+
