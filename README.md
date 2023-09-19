@@ -1,5 +1,7 @@
 # AngularWorkingRoutes
 
+![Texto Alternativo da Imagem](https://miro.medium.com/v2/resize:fit:720/0*e8uU8t98fGBONT8c)
+
 Este projeto foi desenvolvido com o propósito de auxiliar na compreensão dos conceitos fundamentais de roteamento no Angular. Abaixo estão listados os principais comandos utilizados durante a criação do projeto:
 
 - `ng new` (cria um novo projeto Angular)
