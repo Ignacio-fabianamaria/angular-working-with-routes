@@ -1,28 +1,62 @@
 # AngularWorkingRoutes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+Este projeto foi desenvolvido com o propósito de auxiliar na compreensão dos conceitos fundamentais de roteamento no Angular. Abaixo estão listados os principais comandos utilizados durante a criação do projeto:
 
-## Development server
+- `ng new` (cria um novo projeto Angular)
+- `ng g m pages/index` (cria o módulo "index" para a página inicial)
+- `ng g c pages/index/title` (cria o componente "title" dentro do módulo "index")
+- `ng g m pages/portfolio` (cria o módulo "portfolio" para a página de portfólio)
+- `ng g c pages/portfolio/card` (cria o componente "card" dentro do módulo "portfolio")
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Neste projeto, foram criadas duas páginas: "index" e "portfólio", cada uma com seu próprio módulo correspondente.
 
-## Code scaffolding
+Dentro do módulo "index", é necessário exportar o componente "title" da seguinte forma:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```typescript
+exports: [
+  TitleComponent
+]
+```
 
-## Build
+Dentro do módulo "portfolio", é necessário exportar o componente "card" da seguinte forma:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```typescript
+exports: [
+  CardComponent
+]
+```
 
-## Running unit tests
+## Definindo as rotas da aplicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+O arquivo src/app/app-routing.module.ts define as configurações das rotas da aplicação Angular, permitindo que os componentes corretos sejam carregados com base nas URLs acessadas pelos usuários.
 
-## Running end-to-end tests
+<details>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```typescript
+const routes: Routes = [
+  {path:'', component: TitleComponent, pathMatch:'full'},
+  {path:'portfolio', component: CardComponent, pathMatch:'prefix'}
+];
+```
 
-## Further help
+- 01 const routes: Routes = [...]:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# angular-working-with-routes
+Aqui, você está criando uma constante chamada routes que armazena uma matriz de objetos. Esses objetos representam as rotas da sua aplicação Angular.
+
+- 02 {path:'', component: TitleComponent, pathMatch:'full'}:
+
+Este é um objeto que descreve a primeira rota. Vamos analisar as propriedades:
+path: '': Define o caminho da rota como uma string vazia, o que significa que esta rota corresponderá à URL raiz da sua aplicação Angular.
+component: TitleComponent: Especifica o componente que será carregado quando essa rota for ativada. No caso, o TitleComponent será carregado quando a URL raiz for acessada.
+pathMatch: 'full': Define o tipo de correspondência de rota como "full" (completa), o que significa que a URL deve corresponder exatamente à string vazia para ativar essa rota. Isso garante que a rota raiz seja correspondida apenas quando não houver nada após a barra na URL.
+
+- 03 {path:'portfolio', component: CardComponent, pathMatch:'prefix'}:
+
+Este é o segundo objeto que descreve a segunda rota.
+path: 'portfolio': Define o caminho da rota como "portfolio", o que significa que esta rota corresponderá à URL que contém "/portfolio".
+component: CardComponent: Especifica o componente que será carregado quando essa rota for ativada. Nesse caso, o CardComponent será carregado quando a URL "/portfolio" for acessada.
+pathMatch: 'prefix': Define o tipo de correspondência de rota como "prefix" (prefixo), o que significa que a rota será ativada quando a URL começar com "/portfolio". Isso permite que a rota seja ativada mesmo se houver segmentos adicionais na URL após "/portfolio", por exemplo, "/portfolio/items".
+
+- No geral, esse código define duas rotas para a sua aplicação Angular: uma para a URL raiz (""), que carregará o TitleComponent, e outra para a URL "/portfolio", que carregará o CardComponent. A correspondência de rota "full" garante que a URL raiz seja correspondida apenas quando a URL estiver vazia, enquanto a correspondência "prefix" permite que a rota "/portfolio" seja correspondida quando a URL começa com "/portfolio".
+
+</details>
