@@ -9,6 +9,7 @@ Este projeto foi desenvolvido com o propósito de auxiliar na compreensão dos c
 - `ng g c pages/index/title` (cria o componente "title" dentro do módulo "index")
 - `ng g m pages/portfolio` (cria o módulo "portfolio" para a página de portfólio)
 - `ng g c pages/portfolio/card` (cria o componente "card" dentro do módulo "portfolio")
+- `ng g c shered/menu` (cria o componente "menu" que será compartilhado entre as páginas)
 
 Neste projeto, foram criadas duas páginas: "index" e "portfólio", cada uma com seu próprio módulo correspondente.
 
@@ -65,3 +66,52 @@ pathMatch: 'prefix': Define o tipo de correspondência de rota como "prefix" (pr
 - Essa rota curinga é útil para lidar com casos em que um usuário digita uma URL inválida ou acessa uma rota não definida na sua aplicação. Em vez de mostrar uma página de erro, você pode redirecioná-los para uma página conhecida, como a página inicial, para garantir uma melhor experiência do usuário.
 
 </details>
+
+## Navegando entre páginas com Router Link
+
+Ao trabalhar com o Angular e sua funcionalidade de roteamento, você pode encontrar diferentes maneiras de navegar entre páginas em sua aplicação. Duas das abordagens mais comuns são o uso de âncoras `<a>` com o atributo `href` e o uso de `routerLink`. Vamos explorar a diferença entre essas duas abordagens:
+
+### âncoras `<a>` com `href`
+
+Usar âncoras tradicionais com o atributo `href` é uma maneira comum de criar links para páginas em uma aplicação web. Por exemplo:
+
+<details>
+
+```html
+<div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/portfolio">Portfólio</a></li>
+  </ul>
+</div>
+``````
+
+<p>
+  Nesse caso, quando um link é clicado, a página inteira é recarregada e a URL da página é atualizada de acordo com o valor do atributo href. Isso geralmente causa uma recarga completa da página e pode não ser ideal para aplicações de página única (SPA) onde você deseja evitar a recarga da página inteira.
+</p>
+
+</details>
+
+### Navegação com routerLink
+
+No Angular, você pode aproveitar o recurso `routerLink` para criar links de navegação eficientes entre páginas, sem a necessidade de recarregar a página inteira. Veja como usar o `routerLink`:
+
+<details>
+
+  ```html
+  <div>
+    <ul>
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/portfolio']">Portfólio</a></li>
+    </ul>
+  </div>
+
+``````
+
+<p>
+O routerLink permite que o Angular cuide da navegação interna, atualizando apenas a parte da página que realmente muda. Isso resulta em uma experiência de usuário mais suave e melhora o desempenho do aplicativo.
+Em resumo, ao utilizar o routerLink no Angular, você cria links de navegação mais eficientes e agradáveis, especialmente em aplicações de página única (SPA - Single Page Application).
+</p>
+
+</details>
+
