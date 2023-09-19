@@ -162,11 +162,11 @@ Em resumo, ao usar [routerLinkActive] com [routerLinkActiveOptions], você pode 
 
 As rotas filhas (`children routes`) são um recurso poderoso do Angular que permite criar hierarquias de rotas aninhadas. Isso é particularmente útil quando você deseja segmentar partes específicas de sua aplicação com suas próprias configurações de rota e componentes.
 
+<details>
+
 ### Como as Rotas Filhas Funcionam
 
 As rotas filhas são definidas dentro das rotas principais (rotas pais) e são anexadas a essas rotas. Isso cria uma estrutura de rota aninhada, onde a rota pai pode ter uma ou mais rotas filhas associadas a ela.
-
-<details>
 
 ### Exemplo de Rotas Filhas
 
